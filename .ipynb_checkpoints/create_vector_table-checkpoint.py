@@ -8,8 +8,8 @@ from sqlalchemy.dialects.postgresql import VECTOR  # comes from pgvector extensi
 
 Base = declarative_base()
 
-class embedded_table(Base):
-    __tablename__ = "embedded_table" # name of the table where embedding will be stored
+class EmbeddedTable(Base):
+    __tablename__ = "EmbeddedTable" # name of the table where embedding will be stored
     id = Column(Integer, primary_key=True, autoincrement=True)
     schema = Column(String, nullable=False)   # Useful if there are multiple schemas
     table = Column(String, nullable=False) # table name

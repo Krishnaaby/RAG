@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.dialects.postgresql import ENUM
 from sentence_transformers import SentenceTransformer
-from create_vector_table import Base, embedded_table  # Your ORM model
+from create_vector_table import Base, EmbeddedTable  # Your ORM model
 
 # Connect to Postgres
 engine = create_engine("postgresql+psycopg2://user:password@host:port/dbname") #------------------CHECK hardcoded values
@@ -56,7 +56,7 @@ for schema in inspector.get_schema_names():
 
 # Insert into PGVector table
 for schema_name, table_name, column_name, description, embedding in embeddings_data:
-    row = embedded_table(
+    row = EmbeddedTable(
         schema=schema_name,
         table=table_name,
         column=column_name,           # None for table-level
